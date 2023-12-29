@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "input_button",
+  "data": {
+    "items": [
+      {
+        "id": "temp",
+        "name": "+ Temp",
+        "icon": "mdi:thermometer-chevron-up"
+      },
+      {
+        "id": "temp_2",
+        "name": "- Temp",
+        "icon": "mdi:thermometer-chevron-down"
+      },
+      {
+        "id": "chlor_on_off_toggle",
+        "name": "Chlor On/Off/Toggle",
+        "icon": "mdi:water-circle"
+      },
+      {
+        "id": "filter_on_off_toggle",
+        "name": "Filter On/Off/Toggle",
+        "icon": "mdi:air-filter"
+      }
+    ]
+  }
+}
