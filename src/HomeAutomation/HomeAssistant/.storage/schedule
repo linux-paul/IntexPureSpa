@@ -25,6 +25,28 @@
         "saturday": [],
         "monday": [],
         "friday": []
+      },
+      {
+        "id": "stosschloren_zeitplan",
+        "name": "Stoßchloren Zeitplan",
+        "icon": "mdi:chart-timeline",
+        "saturday": [],
+        "friday": [],
+        "wednesday": [
+          {
+            "from": "07:00:00",
+            "to": "15:00:00"
+          }
+        ],
+        "monday": [],
+        "tuesday": [],
+        "thursday": [],
+        "sunday": [
+          {
+            "from": "07:00:00",
+            "to": "15:00:00"
+          }
+        ]
       }
     ]
   }

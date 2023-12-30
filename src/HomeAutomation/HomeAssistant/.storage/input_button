@@ -23,6 +23,11 @@
         "id": "filter_on_off_toggle",
         "name": "Filter On/Off/Toggle",
         "icon": "mdi:air-filter"
+      },
+      {
+        "id": "esp_init",
+        "name": "ESP Init",
+        "icon": "mdi:car-esp"
       }
     ]
   }

@@ -19,7 +19,7 @@ mqtt:
       
     - state_topic: "IntexSpa/Error Number"
       unique_id: "ipoolerrnum"
-      name: "Status"
+      name: "IntexSpa_Status"
       unit_of_measurement: 'E'
       
     - state_topic: "IntexSpa/Temperature Setpoint"
@@ -74,6 +74,18 @@ mqtt:
       payload_on: "1"
       payload_off: "0"
       name: "Intex_Heat"
+      
+    - state_topic: "IntexSpa/filter on"
+      command_topic: "IntexSpa/Cmd water filter on off"
+      payload_on: "1"
+      payload_off: "0"
+      name: "Intex_Filter"
+      
+    - state_topic: "IntexSpa/Sanitizer on"
+      command_topic: "IntexSpa/Cmd sanitizer on off"
+      payload_on: "1"
+      payload_off: "0"
+      name: "Intex_Sanitizer"
         
     - state_topic: "IntexSpa/Water jet on"
       unique_id: "spooljet"
@@ -100,17 +112,17 @@ template:
     - name: "Intex Status Template"
       unique_id: "tpoolstatus"
       state: >
-        {% if is_state('sensor.status','0') %}
+        {% if is_state('sensor.intexspa_status','0') %}
           OK
         {% else %}
           E 
-          {{ states('sensor.status') }}
+          {{ states('sensor.intexspa_status') }}
         {% endif %} 
 
     - name: "Intex Communication with pump - Template"
       unique_id: "tpoolcwp"
       state: >-
-        {% if is_state('sensor.intexSpa_communication with pump','1') %}
+        {% if is_state('sensor.intexspa_communication_with_pump','1') %}
           OK
         {% else %}
           Keine Verbindung

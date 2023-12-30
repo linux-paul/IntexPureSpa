@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "minor_version": 2,
+  "key": "input_select",
+  "data": {
+    "items": [
+      {
+        "id": "filter_timer",
+        "name": "Filter Laufzeit / Stunden",
+        "options": [
+          "2",
+          "4",
+          "6"
+        ],
+        "icon": "mdi:air-filter"
+      },
+      {
+        "id": "chlor_timer",
+        "name": "Chlor Laufzeit / Stunden",
+        "icon": "mdi:water-circle",
+        "options": [
+          "3",
+          "5",
+          "8"
+        ]
+      }
+    ]
+  }
+}

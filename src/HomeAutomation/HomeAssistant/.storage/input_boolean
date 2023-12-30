@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "input_boolean",
+  "data": {
+    "items": [
+      {
+        "id": "stosschloren",
+        "name": "Stoßchloren",
+        "icon": "mdi:water-circle"
+      }
+    ]
+  }
+}
