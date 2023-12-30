@@ -1,0 +1,90 @@
+mqtt Topics & Payload
+
+Aktoren:
+/// Nachrichten die z.B. von Schaltern oder Automatisierungen an die Pumpe geschickt werden ///
+
+Topic: IntexSpa/Cmd Power on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd water jet on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd bubble on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd heater on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd Temperature Setpoint
+Payload: n
+
+Topic: IntexSpa/Cmd decrease
+Payload: 1
+
+Topic: IntexSpa/Cmd increase
+Payload: 1
+
+Topic: IntexSpa/Cmd sanitizer on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd water filter on off
+Payload: 0/1
+
+Topic: IntexSpa/Cmd Farenheit Celsius
+Payload: 0/1
+
+Topic: IntexSpa/Cmd Sanitizer time
+Payload: 3/5/8
+
+Topic: IntexSpa/Cmd water filter time
+Payload: 2/4/6
+
+Topic: IntexSpa/Cmd Reset ESP
+Payload: reset
+
+
+Sensoren:
+/// Nachrichten die von der Pumpe an Sensoren oder Templates zurück gemeldet werden-
+
+Topic: IntexSpa/Power on
+Payload: 0/1
+
+Topic: IntexSpa/Bubble on
+Payload: 0/1
+
+Topic: IntexSpa/Water jet on
+Payload: 0/1
+
+Topic: IntexSpa/heater on
+Payload: 0/1
+
+Topic: IntexSpa/heater state
+Payload: 0/1/2 (Off/Standby/On)
+
+Topic: IntexSpa/Temperature Setpoint
+Payload: n
+
+Topic: IntexSpa/Actual Temperature
+Payload: n
+
+Topic: IntexSpa/filter on
+Payload: 0/1
+
+Topic: IntexSpa/filter setup time
+Payload: 2/4/6
+
+Topic: IntexSpa/Sanitizer on
+Payload: 0/1
+
+Topic: IntexSpa/Sanitizer setup time
+Payload: 3/5/8
+
+Topic: IntexSpa/Farenheit Celsius
+Payload: 0/1
+
+Topic: IntexSpa/Error Number
+Payload: n
+
+Topic: IntexSpa/Communication with pump
+Payload 1/n
+
