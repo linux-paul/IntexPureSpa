@@ -238,6 +238,10 @@ bool SwitchOffSanitizer;
 bool StateSanitizer;
 #endif
 
+// linuxpaul fix change temperature while power is off
+
+bool PowerIsOn;
+
 //Setup
 void setup() {
  
@@ -644,7 +648,7 @@ void onConnectionEstablished()
     
    //manage command decrease
    client.subscribe("IntexSpa/Cmd decrease", [](const String & payload) {
-    if (payload== "1")
+    if (payload== "1" && PowerIsOn)
    {
       LastTimeSendData = millis();
       TargetSetpointTemperarue = TargetSetpointTemperarue -1;
@@ -654,7 +658,7 @@ void onConnectionEstablished()
 
    //manage command increase
    client.subscribe("IntexSpa/Cmd increase", [](const String & payload) {
-    if (payload== "1"){
+    if (payload== "1" && PowerIsOn){
       LastTimeSendData = millis();
       TargetSetpointTemperarue = TargetSetpointTemperarue +1;
       ChangeTargetSetpointTemperarue = true;
@@ -663,8 +667,10 @@ void onConnectionEstablished()
 
    //manage command temperature setpoint
    client.subscribe("IntexSpa/Cmd Temperature Setpoint", [](const String & payload) {
-    TargetSetpointTemperarue = payload.toInt();
-    ChangeTargetSetpointTemperarue = true;
+	 if (PowerIsOn) {
+		 TargetSetpointTemperarue = payload.toInt();
+	     ChangeTargetSetpointTemperarue = true;
+	 }
   }); 
 
    // reset
@@ -722,7 +728,8 @@ void DataManagement (){
 #endif
 
    // Send power on
-   SendValue("IntexSpa/Power on", (bool)(Data[BYTE_STATUS_COMMAND] & VALUE_CONTROLLER_ON),ID_POWER_ON); 
+   SendValue("IntexSpa/Power on", (bool)(Data[BYTE_STATUS_COMMAND] & VALUE_CONTROLLER_ON),ID_POWER_ON);
+   PowerIsOn = (bool)(Data[BYTE_STATUS_COMMAND] & VALUE_CONTROLLER_ON),ID_POWER_ON;
 
    //Send Bubble on 
    SendValue("IntexSpa/Bubble on", (bool)(Data[BYTE_STATUS_COMMAND] & VALUE_BUBBLE_ON),ID_BUBBLE_ON); 
