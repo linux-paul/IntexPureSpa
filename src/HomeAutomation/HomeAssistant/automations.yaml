@@ -58,7 +58,7 @@
       payload: reset
   mode: single
 - id: '1703885703298'
-  alias: Filtern
+  alias: Filtern Laufzeit
   description: ''
   trigger:
   - platform: state
@@ -73,7 +73,7 @@
       payload: '{{ states(''input_select.filter_timer'') }}'
   mode: single
 - id: '1703926180118'
-  alias: Chlorem
+  alias: Chloren Laufzeit
   description: ''
   trigger:
   - platform: state
@@ -86,34 +86,6 @@
       qos: '0'
       topic: IntexSpa/Cmd Sanitizer time
       payload: '{{ states(''input_select.chlor_timer'') }}'
-  mode: single
-- id: '1703936592564'
-  alias: Filtern Laufzeit Sync
-  description: ''
-  trigger:
-  - platform: mqtt
-    topic: IntexSpa/filter setup time
-  condition: []
-  action:
-  - service: input_select.select_option
-    target:
-      entity_id: input_select.filter_timer
-    data:
-      option: '{{ trigger.payload }}'
-  mode: single
-- id: '1703937012696'
-  alias: Chloren Laufzeit Sync
-  description: ''
-  trigger:
-  - platform: mqtt
-    topic: IntexSpa/Sanitizer setup time
-  condition: []
-  action:
-  - service: input_select.select_option
-    target:
-      entity_id: input_select.chlor_timer
-    data:
-      option: '{{ trigger.payload }}'
   mode: single
 - id: '1703940465725'
   alias: Stoßchloren
@@ -139,4 +111,84 @@
       qos: '0'
       topic: IntexSpa/Cmd Sanitizer time
       payload: '8'
+  mode: single
+- id: '1714503576338'
+  alias: Filter On
+  description: Filter On Timer
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.filter_on_off_timer
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd water filter on off
+      payload: '1'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 100
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd water filter time
+      payload: '{{ states(''input_select.filter_timer'') }}'
+  mode: single
+- id: '1714572202493'
+  alias: Filter Off
+  description: Filter Aus
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.filter_off
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd water filter on off
+      payload: '0'
+  mode: single
+- id: '1714573589751'
+  alias: Chlor On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.chlor_on_off_timer
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd sanitizer on off
+      payload: '1'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 100
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd Sanitizer time
+      payload: '{{ states(''input_select.chlor_timer'') }}'
+  mode: single
+- id: '1714574042006'
+  alias: Chlor Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.chlor_off
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd sanitizer on off
+      payload: '0'
   mode: single

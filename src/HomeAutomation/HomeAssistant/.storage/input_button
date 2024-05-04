@@ -16,18 +16,28 @@
       },
       {
         "id": "chlor_on_off_toggle",
-        "name": "Chlor On/Off/Toggle",
+        "name": "Chlor On/Timer",
         "icon": "mdi:water-circle"
       },
       {
         "id": "filter_on_off_toggle",
-        "name": "Filter On/Off/Toggle",
+        "name": "Filter On/Timer",
         "icon": "mdi:air-filter"
       },
       {
         "id": "esp_init",
         "name": "ESP Init",
         "icon": "mdi:car-esp"
+      },
+      {
+        "id": "chlor_off",
+        "icon": "mdi:water-circle",
+        "name": "Chlor Off"
+      },
+      {
+        "id": "filter_off",
+        "icon": "mdi:air-filter",
+        "name": "Filter Off"
       }
     ]
   }

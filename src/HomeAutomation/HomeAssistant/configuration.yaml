@@ -75,17 +75,17 @@ mqtt:
       payload_off: "0"
       name: "Intex_Heat"
       
-    - state_topic: "IntexSpa/filter on"
-      command_topic: "IntexSpa/Cmd water filter on off"
-      payload_on: "1"
-      payload_off: "0"
-      name: "Intex_Filter"
+#    - state_topic: "IntexSpa/filter on"
+#      command_topic: "IntexSpa/Cmd water filter on off"
+#      payload_on: "1"
+#      payload_off: "0"
+#      name: "Intex_Filter"
       
-    - state_topic: "IntexSpa/Sanitizer on"
-      command_topic: "IntexSpa/Cmd sanitizer on off"
-      payload_on: "1"
-      payload_off: "0"
-      name: "Intex_Sanitizer"
+#    - state_topic: "IntexSpa/Sanitizer on"
+#      command_topic: "IntexSpa/Cmd sanitizer on off"
+#      payload_on: "1"
+#      payload_off: "0"
+#      name: "Intex_Sanitizer"
         
     - state_topic: "IntexSpa/Water jet on"
       unique_id: "spooljet"
@@ -117,6 +117,28 @@ template:
         {% else %}
           E 
           {{ states('sensor.intexspa_status') }}
+        {% endif %} 
+
+    - name: "Intex Filter Template"
+      unique_id: "tfilterstatus"
+      state: >
+        {% if is_state('sensor.intex_filter_status','0') %}
+          Off
+        {% elif is_state('sensor.intex_filter_status','1') %}
+          On
+        {% else %}
+          ???
+        {% endif %} 
+
+    - name: "Intex Chlor Template"
+      unique_id: "tchlorstatus"
+      state: >
+        {% if is_state('sensor.Intex_Sanitizer_Status','0') %}
+          Off
+        {% elif is_state('sensor.Intex_Sanitizer_Status','1') %}
+          On
+        {% else %}
+          ???
         {% endif %} 
 
     - name: "Intex Communication with pump - Template"
