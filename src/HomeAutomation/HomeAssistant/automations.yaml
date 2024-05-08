@@ -100,12 +100,22 @@
   - condition: state
     entity_id: input_boolean.stosschloren
     state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.stosschloren
+      state: 'on'
   action:
   - service: mqtt.publish
     data:
       qos: '0'
       topic: IntexSpa/Cmd sanitizer on off
       payload: '1'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
   - service: mqtt.publish
     data:
       qos: '0'
@@ -129,8 +139,8 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 100
+      seconds: 2
+      milliseconds: 0
   - service: mqtt.publish
     data:
       qos: '0'
@@ -169,8 +179,8 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 100
+      seconds: 2
+      milliseconds: 0
   - service: mqtt.publish
     data:
       qos: '0'
