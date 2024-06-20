@@ -100,11 +100,6 @@
   - condition: state
     entity_id: input_boolean.stosschloren
     state: 'on'
-  - condition: and
-    conditions:
-    - condition: state
-      entity_id: input_boolean.stosschloren
-      state: 'on'
   action:
   - service: mqtt.publish
     data:
@@ -201,4 +196,34 @@
       qos: '0'
       topic: IntexSpa/Cmd sanitizer on off
       payload: '0'
+  mode: single
+- id: '1716235519297'
+  alias: Filtern Zeitplan
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - schedule.filtern_zeitplan
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.filtern
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd water filter on off
+      payload: '1'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      topic: IntexSpa/Cmd water filter time
+      payload: '6'
   mode: single

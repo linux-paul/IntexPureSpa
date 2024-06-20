@@ -35,15 +35,15 @@ mqtt:
       unique_id: "ipoolheaterstate"
       name: "Intex/Heater Status"
     
-    - state_topic: "IntexSpa/filter setup time"
-      unique_id: "ipoolfiltersetuptime"
-      name: "IntexSpa/Filter Setup Timer"
-      unit_of_measurement: 'min'
+#    - state_topic: "IntexSpa/filter setup time"
+#      unique_id: "ipoolfiltersetuptime"
+#      name: "IntexSpa/Filter Setup Timer"
+#      unit_of_measurement: 'min'
     
-    - state_topic: "IntexSpa/Sanitizer setup time"
-      unique_id: "ipoolchorsetuptime"
-      name: "IntexSpa/Desinfektion setup Timer"
-      unit_of_measurement: 'min'
+#    - state_topic: "IntexSpa/Sanitizer setup time"
+#      unique_id: "ipoolchorsetuptime"
+#      name: "IntexSpa/Desinfektion setup Timer"
+#      unit_of_measurement: 'min'
       
     - state_topic: "IntexSpa/filter on"
       unique_id: "ipoolfilter"
